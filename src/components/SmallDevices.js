@@ -22,6 +22,23 @@ const items = [
     }    
 ]
 
+// Actions
+
+const BUY_PHONE = 'BUY_PHONE';
+const BUY_TABLET = 'BUY_TABLET';
+
+const buyPhone = () => {
+    return {
+        type: BUY_PHONE,
+    }
+}
+
+const buyTablet = () => {
+    return {
+        type: BUY_TABLET,
+    }
+}
+
 const handleClick = () => {
 
 }

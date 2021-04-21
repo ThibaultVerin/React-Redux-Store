@@ -12,6 +12,13 @@ export const Root = styled.div`
     background-color: #a000a0;
 `
 
+export const Title = styled.h1`
+    text-align: center;
+    background-color: #a000a0;
+    margin: 0;
+    padding: 30px 0;
+`
+
 export const Container = styled.div`
     width: 250px;
     min-height: 50px;
