@@ -1,24 +1,26 @@
 import React from 'react';
-import tv from '../images/tv.svg';
-import computer from '../images/computer.svg';
-import gameConsole from '../images/console.svg';
+import { 
+    Button,
+    Container,
+    Img,
+    Dispo,
+    Count
+} from './style';
 import phone from '../images/phone.svg';
 import tablet from '../images/tablet.svg';
 
 const items = [
     {
-        name: "computer",
-        src: computer
-    }
+        name: "phone",
+        src: phone,
+        stock: 16
+    },
+    {
+        name: "tablet",
+        src: tablet,
+        stock: 24
+    }    
 ]
-
-// {
-//     computer,
-//     console,
-//     phone,
-//     tablet,
-//     tv
-// }
 
 const handleClick = () => {
 
@@ -27,16 +29,16 @@ const handleClick = () => {
 const SmallDevices = () => {
 
     return (
-        <div>
-            {items.map((item) => 
-                <div>
-                    <img src={item.src} alt={item.name} />
-                    <p>Disponibility : <span></span></p>
-                    <button type="button" onClick={handleClick}>Buy {item.name}</button>
-                </div>
+        <>
+            {items.map((item, index) => 
+                <Container key={index}>
+                    <Img src={item.src} alt={item.name} />
+                    <Dispo>Disponibility : <Count>{item.stock}</Count></Dispo>
+                    <Button type="button" onClick={handleClick}>Buy {item.name}</Button>
+                </Container>
             )}
             
-        </div>
+        </>
     )
 }
 
