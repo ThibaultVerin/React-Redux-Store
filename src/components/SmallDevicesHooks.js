@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { 
     Button,
     Container,
@@ -9,6 +9,7 @@ import {
 } from './style';
 import phone from '../images/phone.svg';
 import tablet from '../images/tablet.svg';
+import { buyPhone, buyTablet } from '../Redux/SmallDevices/ActionSmallDevices';
 
 const smallDeviceItems = [
     {
@@ -21,33 +22,27 @@ const smallDeviceItems = [
     }    
 ]
 
-const handleClick = () => {
 
-}
+const SmallDevices = () => {
 
-const SmallDevices = (props) => {
+    const phone = useSelector((state) => state.phone)
+    const tablet = useSelector((state) => state.tablet)
 
-    console.log(props)
+
+    const dispatch = useDispatch()
+
 
     return (
         <>
             {smallDeviceItems.map((item, index) => 
                 <Container key={index}>
                     <Img src={item.src} alt={item.name} />
-                    <Dispo>Disponibility : <Count>{props.phone}</Count></Dispo>
-                    <Button type="button" onClick={handleClick}>Buy {item.name}</Button>
+                    <Dispo>Disponibility : <Count>{item.name === 'phone' ? <>{phone}</> : <>{tablet}</> }</Count></Dispo>
+                    <Button type="button" onClick={() => dispatch(buyPhone())}>Buy {item.name}</Button>
                 </Container>
             )}
-            
         </>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        phone: state.phone,
-        tablet: state.tablet
-    }
-}
-
-export default connect(mapStateToProps)(SmallDevices);
+export default SmallDevices;
