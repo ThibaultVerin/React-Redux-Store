@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { 
     Button,
     Container,
@@ -25,24 +25,36 @@ const smallDeviceItems = [
 
 const SmallDevices = () => {
 
-    const handleClick = () => {
-        
-    }
+    const phone = useSelector((state) => state.phone)
+    const tablet = useSelector((state) => state.tablet)
 
-    console.log()
+    // const itemType = (item) => {
+    //     console.log
+    //     if (item.name === 'phone'){
+    //         return phone
+    //     } else if (item.name === 'tablet'){
+    //         return tablet
+    //     }
+    // }
 
     return (
         <>
             {smallDeviceItems.map((item, index) => 
                 <Container key={index}>
                     <Img src={item.src} alt={item.name} />
-                    <Dispo>Disponibility : <Count></Count></Dispo>
-                    <Button type="button" onClick={() => handleClick(item)}>Buy {item.name}</Button>
+                    <Dispo>Disponibility : <Count>{item.name === 'phone' ? <>{phone}</> : <>{tablet}</> }</Count></Dispo>
+                    <Button type="button" onClick={() => (item)}>Buy {item.name}</Button>
                 </Container>
             )}
         </>
     )
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        buyPhone: () => dispatch(buyPhone()),
+        buyTablet: () => dispatch(buyTablet())
+    }
+}
 
 export default SmallDevices;

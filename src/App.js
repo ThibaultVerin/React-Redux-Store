@@ -2,7 +2,7 @@ import { Provider } from 'react-redux';
 import store from './Redux/Store';
 import { Root, Title } from './components/style';
 import HighTechDevices from './components/HighTechDevices';
-import SmallDevices from './components/SmallDevices';
+import SmallDevices from './components/SmallDevicesHooks';
 
 function App() {
   return (
