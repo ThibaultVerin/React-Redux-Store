@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { 
     Button,
     Container,
@@ -23,20 +23,20 @@ const smallDeviceItems = [
 ]
 
 
-const SmallDevices = () => {
+const SmallDevices = (props) => {
 
     const handleClick = () => {
-        
+        return props.buyPhone();
     }
 
-    console.log()
+    console.log(props)
 
     return (
         <>
             {smallDeviceItems.map((item, index) => 
                 <Container key={index}>
                     <Img src={item.src} alt={item.name} />
-                    <Dispo>Disponibility : <Count></Count></Dispo>
+                    <Dispo>Disponibility : <Count>{item.name === 'phone' ? <> {props.phone} </> : <> {props.tablet} </>}</Count></Dispo>
                     <Button type="button" onClick={() => handleClick(item)}>Buy {item.name}</Button>
                 </Container>
             )}
@@ -45,4 +45,18 @@ const SmallDevices = () => {
 }
 
 
-export default SmallDevices;
+const mapStateToProps = (state) => {
+    return {
+        phone: state.phone,
+        tablet: state.tablet
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        buyPhone: () => dispatch(buyPhone()),
+        buyTablet: () => dispatch(buyTablet())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SmallDevices);
