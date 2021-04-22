@@ -9,6 +9,7 @@ import {
 } from './style';
 import phone from '../images/phone.svg';
 import tablet from '../images/tablet.svg';
+import { buyPhone, buyTablet } from '../Redux/SmallDevices/ActionSmallDevices';
 
 const smallDeviceItems = [
     {
@@ -21,11 +22,12 @@ const smallDeviceItems = [
     }    
 ]
 
-const handleClick = () => {
-
-}
 
 const SmallDevices = (props) => {
+
+    const handleClick = () => {
+        return props.buyPhone();
+    }
 
     console.log(props)
 
@@ -34,14 +36,14 @@ const SmallDevices = (props) => {
             {smallDeviceItems.map((item, index) => 
                 <Container key={index}>
                     <Img src={item.src} alt={item.name} />
-                    <Dispo>Disponibility : <Count>{props.phone}</Count></Dispo>
-                    <Button type="button" onClick={handleClick}>Buy {item.name}</Button>
+                    <Dispo>Disponibility : <Count>{item.name === 'phone' ? <> {props.phone} </> : <> {props.tablet} </>}</Count></Dispo>
+                    <Button type="button" onClick={() => handleClick(item)}>Buy {item.name}</Button>
                 </Container>
             )}
-            
         </>
     )
 }
+
 
 const mapStateToProps = (state) => {
     return {
@@ -50,4 +52,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(SmallDevices);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        buyPhone: () => dispatch(buyPhone()),
+        buyTablet: () => dispatch(buyTablet())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SmallDevices);
