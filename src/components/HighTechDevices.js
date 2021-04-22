@@ -10,7 +10,7 @@ import tv from '../images/tv.svg';
 import computer from '../images/computer.svg';
 import gameConsole from '../images/console.svg';
 
-const highTechItems = [
+export const highTechItems = [
     {
         name: "computer",
         src: computer,
@@ -28,29 +28,6 @@ const highTechItems = [
     }
 ]
 
-// Actions
-
-const BUY_COMPUTER = 'BUY_COMPUTER';
-const BUY_TV = 'BUY_TV';
-const BUY_CONSOLE = 'BUY_CONSOLE';
-
-const buyComputer = () => {
-    return {
-        type: BUY_COMPUTER,
-    }
-}
-
-const buyTv = () => {
-    return {
-        type: BUY_TV,
-    }
-}
-
-const buyConsole = () => {
-    return {
-        type: BUY_CONSOLE,
-    }
-}
 
 const handleClick = () => {
 

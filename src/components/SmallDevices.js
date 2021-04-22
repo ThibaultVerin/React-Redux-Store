@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { 
     Button,
     Container,
@@ -9,48 +10,31 @@ import {
 import phone from '../images/phone.svg';
 import tablet from '../images/tablet.svg';
 
-const items = [
+const smallDeviceItems = [
     {
         name: "phone",
         src: phone,
-        stock: 16
     },
     {
         name: "tablet",
         src: tablet,
-        stock: 24
     }    
 ]
-
-// Actions
-
-const BUY_PHONE = 'BUY_PHONE';
-const BUY_TABLET = 'BUY_TABLET';
-
-const buyPhone = () => {
-    return {
-        type: BUY_PHONE,
-    }
-}
-
-const buyTablet = () => {
-    return {
-        type: BUY_TABLET,
-    }
-}
 
 const handleClick = () => {
 
 }
 
-const SmallDevices = () => {
+const SmallDevices = (props) => {
+
+    console.log(props)
 
     return (
         <>
-            {items.map((item, index) => 
+            {smallDeviceItems.map((item, index) => 
                 <Container key={index}>
                     <Img src={item.src} alt={item.name} />
-                    <Dispo>Disponibility : <Count>{item.stock}</Count></Dispo>
+                    <Dispo>Disponibility : <Count>{props.phone}</Count></Dispo>
                     <Button type="button" onClick={handleClick}>Buy {item.name}</Button>
                 </Container>
             )}
@@ -59,4 +43,11 @@ const SmallDevices = () => {
     )
 }
 
-export default SmallDevices;
+const mapStateToProps = (state) => {
+    return {
+        phone: state.phone,
+        tablet: state.tablet
+    }
+}
+
+export default connect(mapStateToProps)(SmallDevices);

@@ -48,7 +48,7 @@ export const Count = styled.span`
 export const Button = styled.button`
     border: 1px solid purple;
     border-radius: 10px;
-    background: purple;
+    background: #a000a0;
     padding: 10px;
     color: #fff;
     text-transform: uppercase;
