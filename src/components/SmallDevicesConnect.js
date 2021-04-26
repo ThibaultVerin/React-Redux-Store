@@ -45,9 +45,12 @@ const SmallDevices = (props) => {
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+
+    const empty = state.phone > 0 ? state.phone : ownProps.warning;
+    
     return {
-        phone: state.phone,
+        phone: empty,
         tablet: state.tablet
     }
 }

@@ -11,13 +11,13 @@ const smallDeviceReducer = (state = smallDevicesState, action) => {
         case BUY_PHONE:
             return {
                 ...state,
-                phone: state.phone - 1
+                phone: state.phone - action.payload
             }
 
         case BUY_TABLET:
             return {
                 ...state,
-                tablet: state.tablet - 1
+                tablet: state.tablet - action.payload
             }
 
         default:
