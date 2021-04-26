@@ -5,7 +5,10 @@ import {
     Container,
     Img,
     Dispo,
-    Count
+    Count,
+    CountButtonContainer,
+    TotalCount,
+    CountButton
 } from './style';
 import tv from '../images/tv.svg';
 import computer from '../images/computer.svg';
@@ -47,52 +50,73 @@ const HighTechDevices = () => {
     const dispatch = useDispatch();
 
 
-    // const incrementCount = (item) => {
+    const incrementCount = (item) => {
 
-    //     switch (item.name) {
-    //         case 'phone':
-    //             setTotalItemPhone(totalItemPhone + 1)
-    //             break;
+        switch (item.name) {
+            case 'computer':
+                if (totalItemComputer < computer){
+                    setTotalItemComputer(totalItemComputer + 1)
+                }
+                break;
 
-    //         case 'tablet':
-    //             setTotalItemTablet(totalItemTablet + 1)
-    //             break;
+            case 'gameConsole':
+                if (totalItemConsole < gamingConsole){
+                    setTotalItemConsole(totalItemConsole + 1)
+                }
+                break;
+
+            case 'tv':
+                if (totalItemTv < tv){
+                    setTotalItemTv(totalItemTv + 1)
+                }
+                break;
         
-    //         default:
-    //             break;
-    //     }
+            default:
+                break;
+        } 
+    }
+
+    const decrementCount = (item) => {
+
+        switch (item.name) {
+            case 'computer':
+                if (totalItemComputer > 1){
+                    setTotalItemComputer(totalItemComputer - 1)
+                }
+                break;
+
+            case 'gameConsole':
+                if (totalItemConsole > 1){
+                    setTotalItemConsole(totalItemConsole - 1)
+                }
+                break;
+
+            case 'tv':
+                if (totalItemTv > 1){
+                    setTotalItemTv(totalItemTv - 1)
+                }
+                break;
+        
+            default:
+                break;
+        }
        
-    // }
+    }
 
-    // const decrementCount = (item) => {
+    const totalCount = (item) => {
 
-    //     switch (item.name) {
-    //         case 'phone':
-    //             setTotalItemPhone(totalItemPhone - 1)
-    //             break;
-
-    //         case 'tablet':
-    //             setTotalItemTablet(totalItemTablet - 1)
-    //             break;
+        switch (item.name) {
+            case 'computer':
+                return totalItemComputer;
+            case 'gameConsole':
+                return totalItemConsole;
+            case 'tv':
+                return totalItemTv;
         
-    //         default:
-    //             break;
-    //     }
-       
-    // }
-
-    // const totalCount = (item) => {
-
-    //     switch (item.name) {
-    //         case 'phone':
-    //             return totalItemPhone;
-    //         case 'tablet':
-    //             return totalItemTablet;
-        
-    //         default:
-    //             break;
-    //     }
-    // }
+            default:
+                break;
+        }
+    }
 
     const itemCount = (item) => {
 
@@ -132,6 +156,11 @@ const HighTechDevices = () => {
                     <Img src={item.src} alt={item.name} />
                     <Dispo>Disponibility : <Count>{itemCount(item)}</Count></Dispo>
                     <Button type="button" onClick={() => dispatchAction(item)}>Buy {item.name}</Button>
+                    <CountButtonContainer>
+                        <CountButton type="button" onClick={() => incrementCount(item)}> + </CountButton>
+                        <TotalCount type="text" value={totalCount(item)} disabled />
+                        <CountButton type="button" onClick={() => decrementCount(item)}> - </CountButton>
+                    </CountButtonContainer>
                 </Container>
             )}
         </>

@@ -5,7 +5,10 @@ import {
     Container,
     Img,
     Dispo,
-    Count
+    Count,
+    CountButtonContainer,
+    TotalCount,
+    CountButton
 } from './style';
 import phone from '../images/phone.svg';
 import tablet from '../images/tablet.svg';
@@ -37,11 +40,15 @@ const SmallDevices = () => {
 
         switch (item.name) {
             case 'phone':
-                setTotalItemPhone(totalItemPhone + 1)
+                if (totalItemPhone < phone){
+                    setTotalItemPhone(totalItemPhone + 1)
+                }
                 break;
 
             case 'tablet':
-                setTotalItemTablet(totalItemTablet + 1)
+                if (totalItemTablet < tablet){
+                    setTotalItemTablet(totalItemTablet + 1)
+                }
                 break;
         
             default:
@@ -54,11 +61,15 @@ const SmallDevices = () => {
 
         switch (item.name) {
             case 'phone':
-                setTotalItemPhone(totalItemPhone - 1)
+                if (totalItemPhone > 1){
+                    setTotalItemPhone(totalItemPhone - 1)
+                }
                 break;
 
             case 'tablet':
-                setTotalItemTablet(totalItemTablet - 1)
+                if (totalItemTablet > 1){
+                    setTotalItemTablet(totalItemTablet - 1)
+                }
                 break;
         
             default:
@@ -113,12 +124,11 @@ const SmallDevices = () => {
                     <Img src={item.src} alt={item.name} />
                     <Dispo>Disponibility : <Count>{itemCount(item)}</Count></Dispo>
                     <Button type="button" onClick={() => dispatchAction(item)}>Buy {item.name}</Button>
-                    <div>
-                        <button type="button" onClick={() => incrementCount(item)}>+</button>
-                        <input type="text" value={totalCount(item)} disabled />
-                        <button type="button" onClick={() => decrementCount(item)}>-</button>
-                    </div>
-                    
+                    <CountButtonContainer>
+                        <CountButton type="button" onClick={() => incrementCount(item)}> + </CountButton>
+                        <TotalCount type="text" value={totalCount(item)} disabled />
+                        <CountButton type="button" onClick={() => decrementCount(item)} disabled={false}> - </CountButton>
+                    </CountButtonContainer>  
                 </Container>
             )}
         </>
