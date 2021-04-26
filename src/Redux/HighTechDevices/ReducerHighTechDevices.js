@@ -12,19 +12,19 @@ const hightTechDevicesReducer = (state = highTechState, action) => {
         case BUY_COMPUTER:
             return {
                 ...state,
-                computer: state.computer - action.payload
+                computer: state.computer - 1
             }
 
         case BUY_CONSOLE:
             return {
                 ...state,
-                console: state.console - action.payload
+                console: state.console - 1
             }
 
         case BUY_TV:
             return {
                 ...state,
-                tv: state.tv - action.payload
+                tv: state.tv - 1
             }
         default:
             return state

@@ -7,16 +7,16 @@ export const buyComputer = (totalAmountComputer) => {
     }
 }
 
-export const buyTv = (totalAmountTv) => {
+export const buyTv = (totalAmountComputer) => {
     return {
         type: BUY_TV,
-        payload: totalAmountTv
+        payload: totalAmountComputer
     }
 }
 
-export const buyConsole = (totalAmountConsole) => {
+export const buyConsole = (totalAmountComputer) => {
     return {
         type: BUY_CONSOLE,
-        payload: totalAmountConsole
+        payload: totalAmountComputer
     }
 }
