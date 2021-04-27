@@ -31,11 +31,7 @@ export const highTechItems = [
         src: tv,
         stock: 29
     }
-]
-
-const handleClick = () => {
-
-}
+];
 
 const HighTechDevices = () => {
 

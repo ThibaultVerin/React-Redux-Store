@@ -7,8 +7,6 @@ const rootReducer = combineReducers({
     highTechDevices: hightTechDevicesReducer
 });
 
-
-
 const store = createStore(rootReducer);
 
 export default store;

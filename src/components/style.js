@@ -91,4 +91,5 @@ export const CountButton = styled.button`
     color: #fff;
     font-size: 17px;
     font-weight: bolder;
+    cursor: pointer;
 `
