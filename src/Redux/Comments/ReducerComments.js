@@ -1,8 +1,3 @@
-// import {
-//     LoadApiComment,
-//     LoadCommentSuccess,
-//     LoadCommentError
-// } from ''
 import {
     LOAD_COMMENTS,
     LOAD_COMMENTS_SUCCESS,

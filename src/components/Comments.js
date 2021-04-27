@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+    LoadApiComment,
+    LoadCommentSuccess,
+    LoadCommentError
+} from '../Redux/Comments/ActionsComments';
 
 import styled from 'styled-components';
 
@@ -13,11 +18,20 @@ export const CommentsContainer = styled.div`
 
 const Comments = () => {
 
+    const isLoading = useSelector(state => state.isLoading);
+    const comment = useSelector(state => state.comment);
+    const error = useSelector(state => state.error);
+
     const dispatch = useDispatch();
+
+    const dispatchAction = () => {
+    }
+
+    console.log(comment)
 
     return (
         <CommentsContainer>
-            Hello
+            {isLoading}
         </CommentsContainer>
     )
 }
