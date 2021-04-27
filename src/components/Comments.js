@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 
@@ -11,6 +12,8 @@ export const CommentsContainer = styled.div`
 `
 
 const Comments = () => {
+
+    const dispatch = useDispatch();
 
     return (
         <CommentsContainer>
